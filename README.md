@@ -18,7 +18,8 @@ npm run dev
 
 La API usa el puerto `5000` por defecto. Para cambiarlo, copia `.env.example` a `.env` y ajusta `PORT`. No subas `.env` a GitHub.
 
-- Health check: `GET http://localhost:5000/api/v1/health`
+- Ruta raíz para la práctica de Sesión 2: `GET http://localhost:5000/` responde `501 Not Implemented`.
+- Health check: `GET http://localhost:5000/api/v1/health` responde `200 OK`.
 - Prefijo API: `http://localhost:5000/api/v1`
 
 ## Persistencia
@@ -180,3 +181,14 @@ Los commits deben describir un cambio coherente con Conventional Commits, por ej
 Antes de publicar, verifica `git status`, `git log --oneline --decorate` y `git ls-files .env node_modules dist`. El último comando no debe listar archivos. No compartas secretos ni contraseñas reales.
 
 Flujo sugerido al crear un repositorio vacío en GitHub: publica `main`, publica la rama de trabajo y abre un Pull Request de `feat/control-labs-modules` hacia `main`. Revisa el diff y las pruebas antes de integrar. Para tareas nuevas, parte de `main` actualizado y crea una rama corta: `git switch main`, `git pull --ff-only origin main`, `git switch -c feat/nueva-tarea`. No uses `git push --force` sobre ramas compartidas.
+
+
+## Probar el error 501 en Thunder Client
+
+1. Ejecuta `npm run dev` en la terminal.
+2. En VS Code abre **Thunder Client** y pulsa **New Request**.
+3. Selecciona el método **GET**.
+4. En la URL escribe exactamente `http://localhost:5000` (también funciona con la barra final).
+5. Pulsa **Send**. Debes ver el estado **501 Not Implemented** y un JSON indicando que la ruta raíz no está implementada.
+
+No agregues `/api/v1/health` a esta prueba: esa ruta es una comprobación de salud y debe responder `200 OK`. El `501` de la raíz es intencional para cumplir la práctica.
