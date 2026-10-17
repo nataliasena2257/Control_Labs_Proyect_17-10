@@ -166,6 +166,8 @@ src/
 
 ## Git y GitHub
 
+El historial de esta entrega contiene un commit inicial de preparación y commits separados para préstamos, usuarios, ambientes, equipos y documentación. La rama de trabajo es `feat/control-labs-modules`; `main` conserva el punto de partida TypeScript para que puedas practicar el flujo de revisión de la Sesión 2.
+
 Los commits deben describir un cambio coherente con Conventional Commits, por ejemplo:
 
 - `chore(migration): prepara proyecto TypeScript`
@@ -175,4 +177,6 @@ Los commits deben describir un cambio coherente con Conventional Commits, por ej
 - `feat(equipment): implementa gestión de equipos`
 - `docs(readme): documenta endpoints y pruebas`
 
-Antes de publicar, verifica `git status`, `git log --oneline` y `git ls-files .env node_modules dist`. El último comando no debe listar archivos. No compartas secretos ni contraseñas reales.
+Antes de publicar, verifica `git status`, `git log --oneline --decorate` y `git ls-files .env node_modules dist`. El último comando no debe listar archivos. No compartas secretos ni contraseñas reales.
+
+Flujo sugerido al crear un repositorio vacío en GitHub: publica `main`, publica la rama de trabajo y abre un Pull Request de `feat/control-labs-modules` hacia `main`. Revisa el diff y las pruebas antes de integrar. Para tareas nuevas, parte de `main` actualizado y crea una rama corta: `git switch main`, `git pull --ff-only origin main`, `git switch -c feat/nueva-tarea`. No uses `git push --force` sobre ramas compartidas.
