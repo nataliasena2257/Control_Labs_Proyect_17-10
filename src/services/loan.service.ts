@@ -1,8 +1,7 @@
-﻿export type LoanFilters = Record<string, unknown>;
-
+/** La Sesión 2 deja el servicio de préstamos como punto de extensión; por eso los handlers responden 501. */
+export type LoanFilters = Record<string, unknown>;
 export class LoanService {
-  /** Returns loans matching the provided filters. The persistence layer is not part of this project yet. */
-  public static getLoansByFilter(_filters: LoanFilters): unknown[] {
+  public static getLoansByFilter(_filters: LoanFilters): never[] {
     return [];
   }
 }
