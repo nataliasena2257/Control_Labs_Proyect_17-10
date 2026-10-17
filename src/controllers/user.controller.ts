@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import { ids, now, users } from '../data/store';
 import { User, UserRole, RecordStatus } from '../models/control-labs.types';
+import { hashPassword } from '../services/password.service';
 
 const roles: UserRole[] = ['estudiante', 'docente', 'administrador'];
 const statuses: RecordStatus[] = ['activo', 'inactivo'];
-const publicUser = ({ password: _password, ...user }: User) => user;
+const publicUser = ({ passwordHash: _passwordHash, ...user }: User) => user;
 
 export class UserController {
   static list = (_req: Request, res: Response): void => {
@@ -39,7 +40,7 @@ export class UserController {
     }
     const user: User = {
       id: ids.user(), name: name.trim(), email: email.trim().toLowerCase(), role: role as UserRole,
-      status: 'activo', password, createdAt: now()
+      status: 'activo', passwordHash: hashPassword(password), createdAt: now()
     };
     users.push(user);
     res.status(201).json({ success: true, data: publicUser(user) });
@@ -76,7 +77,7 @@ export class UserController {
     }
     if (body.role !== undefined) user.role = body.role as UserRole;
     if (body.status !== undefined) user.status = body.status as RecordStatus;
-    if (body.password !== undefined) user.password = body.password as string;
+    if (body.password !== undefined) user.passwordHash = hashPassword(body.password as string);
     res.status(200).json({ success: true, data: publicUser(user) });
   };
 

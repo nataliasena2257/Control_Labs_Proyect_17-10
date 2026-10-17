@@ -8,7 +8,7 @@ export interface User {
   email: string;
   role: UserRole;
   status: RecordStatus;
-  password: string;
+  passwordHash: string;
   createdAt: string;
   deletedAt?: string;
 }
