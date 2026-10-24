@@ -1,9 +1,11 @@
+
+# Dependencias de Node.js
 node_modules/
-dist/
-build/
-coverage/
+
+# Variables de entorno y datos secretos
 .env
 .env.*
+
+# Permitir plantillas de ejemplo sin secretos
 !.env.example
-.DS_Store
-Thumbs.db
+dist/

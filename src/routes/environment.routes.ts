@@ -1,8 +1,14 @@
 import { Router } from 'express';
-import { EnvironmentController } from '../controllers/environment.controller';
+import {
+    getEnvironments,
+    createEnvironment,
+    updateEnvironment
+} from '../controllers/environment.controller';
 
 const router = Router();
-router.get('/', EnvironmentController.list);
-router.post('/', EnvironmentController.create);
-router.patch('/:id', EnvironmentController.patch);
+
+router.get('/', getEnvironments);
+router.post('/', createEnvironment);
+router.patch('/:id', updateEnvironment);
+
 export default router;
